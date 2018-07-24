@@ -11,6 +11,9 @@ html, body {
 
 body {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 li {
@@ -32,6 +35,7 @@ a {
 /* 公共头部样式 */
 .Header {
     background-color: #2196F3;
+    width: 100%;
     height: 50px;
 }
 
@@ -68,11 +72,15 @@ a {
     float: right;
 }
 
+/* Content style */
+
+.Content {
+    width: 80%;
+    flex: 1;
+}
 
 /* 公共底部样式 */
 .Footer {
-    position: absolute;
-    bottom: 0px;
     width: 100%;
     height: 60px;
     line-height: 60px;

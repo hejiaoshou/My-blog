@@ -1,0 +1,10 @@
+.Content {
+}
+.item {
+    display: inline-block;
+    width: 70%;
+    height: 200px;
+    background-color: #607D8B;
+    margin: 10px;
+    border-radius: 5px;
+}
