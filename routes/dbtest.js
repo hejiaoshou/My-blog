@@ -5,9 +5,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/blog");
 
 	var User = new mongoose.Schema({
 
-    	name : { type:String },
-
-    	age  : { type:Number, default:0 },
+      account: { type: String },
+      password: {type: String},
+    	name : { type: String },
+      email : { type: String },
 
 	});
 

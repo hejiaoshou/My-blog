@@ -7,11 +7,18 @@
     <title>dbtest</title>
 </head>
 <body>
+    
+    <label for="account">account</label>
+    <input id="account" type="tel">
+    <br>
+    <label for="pass">password</label>
+    <input id="pass" type="text">
+    <br>
     <label for="name">name</label>
     <input id="name" type="text">
     <br>
-    <label for="age">age</label>
-    <input id="age" type="tel">
+    <label for="email">email</label>
+    <input id="email" type="text">
     <br>
     <button onclick="subUserInfo()">新增</button>
     <button onclick="select()">查询</button>
@@ -21,14 +28,18 @@
 
     function subUserInfo() {
         var name = document.getElementById("name").value;
-        var age = document.getElementById("age").value;
+        var account = document.getElementById("account").value;
+        var password = document.getElementById("password").value;
+        var email = document.getElementById("email").value;
         if (name !== '' && age !== '') {
             $.ajax({
                 method: 'post',
                 url: '/db/add',
                 data: {
                     name: name,
-                    age: age
+                    account: account,
+                    password: password,
+                    email: email,
                 },
                 success: function (res) {
                     console.log(res);
