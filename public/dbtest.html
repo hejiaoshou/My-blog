@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dbtest</title>
+</head>
+<body>
+    <label for="name">name</label>
+    <input id="name" type="text">
+    <br>
+    <label for="age">age</label>
+    <input id="age" type="tel">
+    <br>
+    <button onclick="subUserInfo()">新增</button>
+    <button onclick="select()">查询</button>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+    function subUserInfo() {
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        if (name !== '' && age !== '') {
+            $.ajax({
+                method: 'post',
+                url: '/db/add',
+                data: {
+                    name: name,
+                    age: age
+                },
+                success: function (res) {
+                    console.log(res);
+                }
+            })
+        }
+
+    }
+
+    function select() {
+        $.ajax({
+            method: 'post',
+            url: '/db/select',
+            data: {
+
+            },
+            success: function (res) {
+                console.log(res);
+            }
+        })
+    }
+</script>
+</html>
