@@ -31,10 +31,10 @@
         var account = document.getElementById("account").value;
         var password = document.getElementById("password").value;
         var email = document.getElementById("email").value;
-        if (name !== '' && age !== '') {
+        if (name !== '' && account !== '') {
             $.ajax({
                 method: 'post',
-                url: '/db/add',
+                url: '/users/add',
                 data: {
                     name: name,
                     account: account,
@@ -52,7 +52,7 @@
     function select() {
         $.ajax({
             method: 'post',
-            url: '/db/select',
+            url: '/users/all',
             data: {
 
             },
