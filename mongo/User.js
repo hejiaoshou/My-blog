@@ -25,7 +25,7 @@ exports.addUser = (data) => {
             password: data.password,
             name: data.name,
             email: data.email
-        }, (res, err) => {
+        }, (err, res) => {
             if (err) {
                 reject(err)
             } else {
@@ -39,7 +39,7 @@ exports.deleteUser = (data) => {
     return new Promise ((resolve, reject) => {
         UserModel.deleteOne({
 
-        }, (res, err) => {
+        }, (err, res) => {
             if (err) {
                 reject(err)
             } else {
@@ -53,7 +53,7 @@ exports.selectUser = (data) => {
     return new Promise ((resolve, reject) => {
         UserModel.find({
 
-        },(res, err) => {
+        },(err, res) => {
             if (err) {
                 reject(err)
             } else {
@@ -67,7 +67,7 @@ exports.updateUser = (data) => {
     return new Promise ((resolve, reject) => {
         UserModel.updateOne({
 
-        },(res, err) => {
+        },(err, res) => {
             if (err) {
                 reject(err)
             } else {
@@ -79,7 +79,19 @@ exports.updateUser = (data) => {
 
 exports.findAllUser = () => {
     return new Promise ((resolve, reject) => {
-        UserModel.find({},(res, err) => {
+        UserModel.find({},(err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res)
+            }
+        })
+    })
+}
+
+exports.login = (data) => {
+    return new Promise ((resolve, reject) => {
+        UserModel.find({account: data.account,password: data.password},(err, res) => {
             if (err) {
                 reject(err)
             } else {

@@ -22,6 +22,7 @@
     <br>
     <button onclick="subUserInfo()">新增</button>
     <button onclick="select()">查询</button>
+    <button onclick="login()">登陆</button>
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
@@ -47,6 +48,24 @@
             })
         }
 
+    }
+
+    var login = () => {
+        var name = document.getElementById("name").value;
+        var account = document.getElementById("account").value;
+        var password = document.getElementById("password").value;
+        var email = document.getElementById("email").value;
+        $.ajax({
+            method: 'post',
+            url: '/users/login',
+            data:{
+                account:account,
+                password: password
+            },
+            success: (res) => {
+                console.log(res)
+            }
+        })
     }
 
     function select() {
