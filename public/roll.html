@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>roll-select-date</title>
+    <style>
+        html,body {
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        #roll-box {
+            width: 100px;
+            height: 350px;
+            text-align: center;
+            overflow: scroll;
+            margin: auto;
+            position: relative;
+        }
+        #roll-box::-webkit-scrollbar {
+            display: none;
+        }
+        .roll-box-hover {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: absolute;
+        }
+        span {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+        }
+        .select {
+            display: inline-block;
+            height: 48px;
+            border: 1px solid #333;
+            border-left: none;
+            border-right: none;
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            right: 0px;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="roll-box-hover">
+        <i class="select"></i>
+    </div>
+    <div id="roll-box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span class="date">test</span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <script>
+        var rollBox = document.getElementById('roll-box');
+        var scrollTopNumber = rollBox.scrollTop;
+        rollBox.addEventListener('scroll', function (e) {
+            if (scrollTopNumber < rollBox.scrollTop) {
+                console.log('上划')
+            } else {
+                console.log('下划')
+            }
+
+            var test = rollBox.scrollTop % 50;
+
+            if (test < 25) {
+                rollBox.scrollTop = rollBox.scrollTop - test;
+            } else {
+                rollBox.scrollTop = rollBox.scrollTop + (50 - (rollBox.scrollTop % 50))
+            }
+
+            scrollTopNumber = rollBox.scrollTop;
+            console.log(rollBox.scrollTop/50)
+            if (rollBox.scrollTop/50%1 == 0) {
+                var select_dom = document.getElementsByClassName('date')[rollBox.scrollTop/50];
+                if (select_dom) {
+                    console.log(select_dom)
+                    select_dom.className='red';
+                }
+            }
+
+        })
+        document.addEventListener('scroll',function () {
+            console.log(233)
+        })
+    </script>
+</body>
+</html>
